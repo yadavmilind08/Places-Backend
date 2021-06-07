@@ -2,7 +2,7 @@ const axios = require("axios");
 
 const HttpError = require("../models/http-error");
 
-const API_KEY = ""; // geocoding API key
+const API_KEY = process.env.GOOGLE_MAP_API_KEY; // geocoding API key
 
 async function getCoordsForAddress(address) {
   // dummy code as we don't have api key

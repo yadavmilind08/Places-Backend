@@ -46,11 +46,10 @@ app.use((error, req, res, next) => {
   res.json({ message: error.message || "An unknown error occured!" });
 });
 
+const url = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.mupyq.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
+
 mongoose
-  .connect(
-    "mongodb+srv://max:max@123@cluster0.mupyq.mongodb.net/mern?retryWrites=true&w=majority",
-    { useNewUrlParser: true, useUnifiedTopology: true }
-  )
+  .connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     app.listen(5000);
   })
